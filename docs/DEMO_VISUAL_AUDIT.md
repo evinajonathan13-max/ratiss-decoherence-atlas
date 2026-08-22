@@ -25,3 +25,9 @@ Le second état de trajectoire a été capturé à l’étape `3 / 3`, porte `cz
 Pour l’aperçu d’ablation personnelle, la première image provient du snapshot `ttf_smooth_baseline`. Le contrôle de la démo a ensuite sélectionné `ttf_smooth_correlation_regularization` avant la seconde capture ; les deux états restent donc visibles dans l’aperçu sans calcul ajouté.
 
 Les aperçus GIF du Studio Personnel ont été vérifiés après assemblage : les cartes de design, la scène WebGL, les métriques et la différence référence/régularisation restent lisibles à la largeur documentaire de 640 pixels.
+
+Après la refonte topologique, `trajectory-replay.html` affiche sous `file://` l’anneau logique, les brins de tresse, l’arc de phase et les métriques `P_sig`, `phase`, `twist`, `coherence` et `protected` extraites du snapshot. `ttf-ablation.html` affiche explicitement « graphe d’inspection » et « non exportée » lorsque l’artefact d’ablation ne fournit pas de sidecar logique : aucun anneau de qubit n’est alors inventé par le lecteur.
+
+Les captures actuelles de l’ablation Personnelle comparent l’état initial `ttf_smooth_baseline` à l’état final `ttf_smooth_correlation_regularization` : porte `cx(2,4)`, frontière `[4, 3]`, support total `1.006`, activation lisse moyenne `0.505` et `P_sig` graphe `0.000`. Les deux états sont rendus sous `file://` et affichent explicitement l’absence de signature logique exportée.
+
+Le GIF actualisé `docs/media/personal-trajectory-webgl-preview.gif` a été vérifié : l’interface Quantum Studio locale, l’anneau, la tresse, l’arc de phase et les métriques de qubit logique sont lisibles à la largeur d’intégration README, sans dépendance réseau.

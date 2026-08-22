@@ -8,6 +8,23 @@ Le **Studio Personnel** est le compagnon hors ligne du Studio Cloud. Il met dans
 
 > **Preuve visuelle de l’interface hors ligne.** Cette capture réelle montre le design `transmon-microcell`, son schéma local, les couches, les fréquences, l’overlay de diaphonie, les contrôles d’export et les panneaux d’atlas dans la page `file://`. Le Studio Personnel présente et exporte les données ; il ne prétend pas simuler une matrice densité ou valider un matériel dans le navigateur.
 
+## Pourquoi un qubit topologique RATISS dans un Studio Personnel ?
+
+Le Studio Personnel n’est pas une version décorative ou affaiblie du paradigme RATISS. Il conserve, dans un navigateur ouvert par `file://`, la capacité de **rejouer un qubit topologique logique simulé** à partir des champs réellement présents dans une timeline. Cette séparation est volontaire : le calcul dense et la production de l’artefact peuvent avoir lieu dans le Studio Cloud, alors que l’examen de la phase, de la torsion, de la cohérence et de la signature logique reste local, portable et sans réseau.
+
+> Lorsque `logical_topology` est exporté, l’Atlas dessine un anneau distribué, trois brins de tresse et un arc de phase qui correspondent aux champs du snapshot. Lorsqu’il est absent — par exemple dans une ablation TTF de graphe — le lecteur affiche **« non exportée »** et ne fabrique aucun qubit topologique visuel.
+
+| Besoin scientifique | Réponse du Studio Personnel | Limite préservée |
+|---|---|---|
+| Relire une trajectoire de circuit en dehors de la machine de calcul | Chargement d’un `timeline.v1` ou d’un snapshot embarqué, avec design et provenance visibles. | Le navigateur ne relance pas une simulation matrice densité. |
+| Comprendre la couche topologique logique | Anneau, tresse, phase, cohérence et protection affichés depuis l’artefact. | Ce sont des variables logicielles, pas des mesures d’un qubit matériel. |
+| Préparer une revue ou une discussion scientifique | La scène relie design, relations de graphe, criticité et signature logique à une étape précise. | La scène ne prouve pas une correction d’erreur physique. |
+| Comparer les scénarios TTF | La bascule conserve la provenance de référence/régularisation et déclare l’absence éventuelle de sidecar logique. | L’ablation reste une expérience sur les relations de graphe. |
+
+### La grammaire visuelle locale
+
+La scène Three.js ne simule pas d’atomes ni ne crée de données supplémentaires. L’anneau tordu et ses douze balises dérivent de `twist` et `P_sig`; l’arc doré suit `phase`; la luminosité suit `coherence`; l’état vert/rouge suit `protected`. Les solides et les tubes voisins relèvent du graphe de corrélations exporté ; la route rose est un ordre TSP d’inspection séparé. Cette distinction rend la page portable sans transformer un replay visuel en affirmation matérielle.
+
 ## Une expérience complète, hors ligne
 
 Le navigateur ne doit pas deviner une simulation. Il affiche les résultats exacts d’un artefact JSON ou d’un snapshot généré depuis ce fichier. Cela donne une frontière claire entre **conception locale**, **replay visuel** et **calcul du moteur**.
@@ -53,7 +70,7 @@ GitHub Markdown ne peut pas exécuter le JavaScript de pages `file://` dans un R
 
 [![Aperçu animé réel de la trajectoire du Studio Personnel](docs/media/personal-trajectory-webgl-preview.gif)](docs/media/personal-trajectory-webgl.webm)
 
-L’aperçu présente deux étapes de la timeline locale, de `h(0)` à `cz(0,1)`, sans cacher le design Studio à gauche. Il est construit à partir d’une vraie session `file://` et ne fait aucun appel réseau. Pour l’interaction complète, ouvrez [`demos/trajectory-replay.html`](demos/trajectory-replay.html) depuis le clone local.
+L’aperçu présente deux étapes de la timeline locale, de `h(0)` à `cz(0,1)`, sans cacher le design Studio à gauche. La démo interactive enrichie rend visible l’anneau, les trois brins de tresse et la phase du qubit topologique logique lorsque ces champs sont réellement exportés. Elle reste entièrement `file://`, sans appel réseau. Pour l’interaction complète, ouvrez [`demos/trajectory-replay.html`](demos/trajectory-replay.html) depuis le clone local.
 
 ### Démonstration 02 — ablation TTF locale
 
