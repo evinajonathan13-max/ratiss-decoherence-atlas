@@ -113,14 +113,14 @@ Le lecteur comprend le format principal `ratiss.topological-decoherence.timeline
 
 ```mermaid
 flowchart LR
-  A[Design Quantum Circuit Studio local] --> B[Export JSON v0.1]
-  C[Timeline RATISS JSON] --> D[Adaptateur de contrat]
-  B --> E[Studio Personnel]
+  A["Design Quantum Studio local"] --> B["Export JSON de design"]
+  C["Timeline RATISS JSON"] --> D["Adaptateur de contrat"]
+  B --> E["Studio Personnel"]
   D --> E
-  E --> F[Scène Three.js locale]
-  E --> G[Timeline et métriques]
-  E --> H[Route TSP et topologie]
-  I[Snapshots versionnés] --> J[Démos file://]
+  E --> F["Scène Three.js locale"]
+  E --> G["Timeline et métriques"]
+  E --> H["Route TSP et topologie"]
+  I["Snapshots versionnés"] --> J["Démos locales par fichier"]
 ```
 
 Le fichier `vendor/three.min.js` est fourni dans le dépôt. Aucune dépendance n’est chargée via CDN au runtime. Les scripts classiques `studio-model.js` et `personal-studio.js` existent précisément pour conserver le fonctionnement `file://` dans les navigateurs qui bloquent les imports ES module locaux.
