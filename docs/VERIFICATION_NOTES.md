@@ -25,3 +25,11 @@ L’artefact régénéré a été rechargé avec succès après cette correction
 À l’étape `10` (`cx(2,4)`), l’interface affiche désormais exactement les éléments fournis par l’artefact : décohérence moyenne `0.018`, deux nœuds critiques en rouge, `P_sig` logique `0.766`, Betti `[1, 0, 0]` et la route rose `3 → 4 → 3`. Le panneau indique `held_karp_exact` et le coût arrondi `6.671`.
 
 Cette vérification confirme que la couleur, le compteur de criticité, la route et le panneau ne sont pas décoratifs : ils sont synchronisés avec `config.criticality_threshold`, les scores de nœuds et `tsp_inspection` du JSON réel.
+
+## Studio Personnel en ouverture `file://`
+
+Le navigateur peut empêcher le chargement d’un import ES module depuis une origine `file://`, même lorsque l’Atlas classique et Three.js local sont disponibles. Le Studio Personnel utilise donc une passerelle `studio-model.js` et un contrôleur `personal-studio.js` en scripts classiques ; ils sont dérivés du modèle traçable `studio-model.mjs` et ne nécessitent aucune requête réseau.
+
+Après le correctif, le Studio Personnel affiche effectivement le design `transmon-microcell`, ses six composants, le schéma local, les quatre familles de couches conceptuelles, les deux fréquences nominales et la ligne de risque de diaphonie `q0 ↔ q1`. Le contrôleur de modèle est présent dans la page locale et le sélecteur d’artefact est prêt pour une timeline RATISS réelle.
+
+La timeline `studio_transmon_microcell_timeline.json`, générée par le chemin interne du Studio Cloud, a ensuite été chargée dans le Studio Personnel ouvert via `file://`. L’Atlas a reconnu ses quatre étapes, sa provenance `internal_studio_import`, les deux nœuds de la scène, Betti `[1, 0, 0]`, `P_sig` de graphe `0.000`, signature logique `1.214` et l’absence de route TSP à l’étape initiale. Cette vérification confirme qu’un utilisateur peut exporter ou obtenir une simulation depuis le Studio Cloud puis l’analyser dans le Studio Personnel sans serveur, CDN, ni clonage du dépôt Cloud.

@@ -4,6 +4,6 @@
   "version": "0.1.0",
   "description": "Offline WebGL reader for RATISS topological decoherence artifacts.",
   "scripts": {
-    "test": "node tests/verify-artifact.mjs"
+    "test": "node tests/verify-artifact.mjs && node tests/verify-studio-model.mjs"
   }
 }
