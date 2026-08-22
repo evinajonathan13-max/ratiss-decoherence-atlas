@@ -39,3 +39,5 @@ pnpm test
 ```
 
 Les tests vérifient l’artefact fourni et le contrat de modèle du Studio Personnel. [`docs/VERIFICATION_NOTES.md`](docs/VERIFICATION_NOTES.md) consigne l’ouverture en `file://`, les panneaux du Studio et l’import d’une timeline générée par le Studio Cloud.
+
+Le dossier `data/external/` contient trois timelines de fixtures importables et étiquetées : comptages Qiskit (`external_qiskit_counts`), distributions de modes photoniques (`external_photonic_modes`) et matrices de corrélation bio déclarées (`external_bio_correlation`). Elles testent les contrats d’import ; elles ne représentent ni des résultats QPU, ni un dispositif photonique, ni des données biologiques réelles.

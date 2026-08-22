@@ -33,3 +33,11 @@ Le navigateur peut empêcher le chargement d’un import ES module depuis une or
 Après le correctif, le Studio Personnel affiche effectivement le design `transmon-microcell`, ses six composants, le schéma local, les quatre familles de couches conceptuelles, les deux fréquences nominales et la ligne de risque de diaphonie `q0 ↔ q1`. Le contrôleur de modèle est présent dans la page locale et le sélecteur d’artefact est prêt pour une timeline RATISS réelle.
 
 La timeline `studio_transmon_microcell_timeline.json`, générée par le chemin interne du Studio Cloud, a ensuite été chargée dans le Studio Personnel ouvert via `file://`. L’Atlas a reconnu ses quatre étapes, sa provenance `internal_studio_import`, les deux nœuds de la scène, Betti `[1, 0, 0]`, `P_sig` de graphe `0.000`, signature logique `1.214` et l’absence de route TSP à l’étape initiale. Cette vérification confirme qu’un utilisateur peut exporter ou obtenir une simulation depuis le Studio Cloud puis l’analyser dans le Studio Personnel sans serveur, CDN, ni clonage du dépôt Cloud.
+
+## Préparation des imports externes
+
+Les fixtures locales de comptages Qiskit, de distributions de modes photoniques et de matrices de corrélation bio sont présentes sous `data/external/`. Le sélecteur de fichiers et l’API locale du lecteur sont disponibles en ouverture `file://` pour leur contrôle de rendu. Les tests Node valident déjà les trois schémas, leurs provenances et le fait que les métriques de matrice densité sont explicitement indisponibles.
+
+Les artefacts `qiskit_counts_timeline.json` et `photonic_modes_timeline.json` ont été chargés successivement dans le Studio Personnel. Les deux sont lus comme des associations importées, avec `P_sig` logique et métriques de densité affichés comme non applicables. L’interface indique explicitement que la criticité et la route TSP sont structurelles, sans inférer décohérence quantique, pureté, fidélité ou entanglement.
+
+L’artefact `bio_correlation_timeline.json` a également été chargé avec succès : ses deux fenêtres sont reconnues, les trois nœuds et la route structurelle exportée sont dessinés, et la même frontière d’interprétation est affichée. Les trois chemins d’ingestion sont ainsi vérifiés dans le lecteur WebGL hors ligne.
