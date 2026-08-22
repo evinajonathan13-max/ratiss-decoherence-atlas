@@ -40,6 +40,23 @@
       <pre id="personal-console">Le Studio Personnel est prêt. La simulation complète provient d’un export RATISS chargé localement ; aucun calcul cloud n’est requis pour explorer ou rejouer un artefact.</pre>
     </section>
 
+    <section class="ablation-panel" aria-label="Comparaison de régularisation TTF">
+      <div>
+        <p class="eyebrow">COMPARAISON EXPÉRIMENTALE · TTF</p>
+        <h2>Référence et régularisation de graphe</h2>
+        <p>Charge les deux timelines calculées par le Studio Cloud. Le navigateur ne modifie aucun état : il rejoue la référence ou la régularisation et expose la frontière d’inspection exportée.</p>
+      </div>
+      <div class="ablation-actions">
+        <label class="file-button secondary" for="ttf-baseline-file">Charger référence</label>
+        <input id="ttf-baseline-file" type="file" accept="application/json,.json" />
+        <label class="file-button secondary" for="ttf-regularized-file">Charger régularisation</label>
+        <input id="ttf-regularized-file" type="file" accept="application/json,.json" />
+        <button id="show-ttf-baseline" type="button" disabled>Voir référence</button>
+        <button id="show-ttf-regularized" type="button" disabled>Voir régularisation</button>
+      </div>
+      <p id="ttf-comparison-status" class="ablation-status">En attente des deux timelines TTF calculées.</p>
+    </section>
+
     <main class="app-shell">
       <section class="stage-panel" aria-label="Visualisation 3D des corrélations">
         <div id="stage" role="application" aria-label="Scène 3D de qubits et de corrélations"></div>

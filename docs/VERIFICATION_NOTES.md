@@ -41,3 +41,11 @@ Les fixtures locales de comptages Qiskit, de distributions de modes photoniques 
 Les artefacts `qiskit_counts_timeline.json` et `photonic_modes_timeline.json` ont été chargés successivement dans le Studio Personnel. Les deux sont lus comme des associations importées, avec `P_sig` logique et métriques de densité affichés comme non applicables. L’interface indique explicitement que la criticité et la route TSP sont structurelles, sans inférer décohérence quantique, pureté, fidélité ou entanglement.
 
 L’artefact `bio_correlation_timeline.json` a également été chargé avec succès : ses deux fenêtres sont reconnues, les trois nœuds et la route structurelle exportée sont dessinés, et la même frontière d’interprétation est affichée. Les trois chemins d’ingestion sont ainsi vérifiés dans le lecteur WebGL hors ligne.
+
+## Comparaison TTF
+
+Le panneau de comparaison TTF est présent dans l’ouverture locale du Studio Personnel. Ses deux emplacements de chargement séparés, « référence » et « régularisation », refusent toute provenance différente des scénarios calculés correspondants. Les contrôles de replay ne sont activés qu’après chargement effectif de leur timeline.
+
+Les deux timelines TTF générées par le Studio Cloud ont été chargées. À l’étape terminale, le panneau compare un support topologique total de `0.118` pour la référence et de `1.006` pour le scénario régularisé, avec la même frontière exportée `[4, 3]`. Cette comparaison est affichée comme une ablation logicielle de graphe, non comme une correction d’erreur physique ou une validation matérielle.
+
+Le bouton de replay « Voir régularisation » a chargé la timeline régularisée puis la navigation a atteint l’étape terminale `10`. Le lecteur confirme sa provenance `TTF · régularisation · 11 étapes` et maintient le libellé « Association importée », qui exclut explicitement toute inférence de fidélité, pureté, décohérence quantique ou entanglement.
