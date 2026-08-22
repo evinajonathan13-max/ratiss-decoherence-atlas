@@ -4,7 +4,9 @@
 
 Le **Studio Personnel** est le compagnon hors ligne du Studio Cloud. Il met dans un seul dépôt une conception locale compacte issue du modèle Quantum Circuit Studio, un lecteur de timelines RATISS, une scène WebGL Three.js empaquetée localement, les métriques exportées, les routes TSP et une comparaison d’ablation TTF. Il est conçu pour être cloné, ouvert et exploré seul.
 
-![Replay WebGL hors ligne de trajectoire](docs/assets/personal-trajectory-webgl.webp)
+![Espace de travail complet du Studio Personnel RATISS hors ligne](docs/media/personal-studio-workspace.webp)
+
+> **Preuve visuelle de l’interface hors ligne.** Cette capture réelle montre le design `transmon-microcell`, son schéma local, les couches, les fréquences, l’overlay de diaphonie, les contrôles d’export et les panneaux d’atlas dans la page `file://`. Le Studio Personnel présente et exporte les données ; il ne prétend pas simuler une matrice densité ou valider un matériel dans le navigateur.
 
 ## Une expérience complète, hors ligne
 
@@ -21,6 +23,18 @@ Le navigateur ne doit pas deviner une simulation. Il affiche les résultats exac
 | Comparaison TTF | Oui | Deux timelines TTF séparées ou snapshots embarqués |
 | Matrice densité ou soumission QPU | Non | À exécuter dans le Studio Cloud |
 
+## Interface complète, vraiment hors ligne
+
+Le Studio Personnel ne réduit pas le modèle Quantum Studio à un simple lecteur. Il conserve un espace de conception compact pour afficher le schéma, les composants, les couches conceptuelles, les fréquences et la diaphonie nominale, puis associe ce design à un atlas WebGL lorsque l’utilisateur ouvre une timeline compatible. Les scripts classiques et Three.js distribués dans le dépôt permettent cette expérience avec `file://`, sans CDN et sans dépendance réseau.
+
+| Zone visible dans l’interface | Fonction locale | Portée explicitement limitée |
+|---|---|---|
+| Conception Quantum Studio | Démo, ajout de transmon, optimisation heuristique et export `v0.1` | Pas de layout de fonderie ni extraction EM |
+| Schéma, couches et fréquence | Inspection d’un design local et de ses proxys | Fréquences nominales, non calibrées |
+| Overlay de diaphonie | Risque de conception selon une heuristique documentée | Pas une mesure électromagnétique |
+| Atlas WebGL et timeline | Replay d’un artefact fourni par fichier ou snapshot | N’invente aucune donnée ou métrique absente |
+| Comparaison TTF | Bascule entre deux timelines calculées séparément | Ablation de graphe, pas correction matérielle |
+
 ## Lancement immédiat
 
 ```bash
@@ -31,18 +45,28 @@ cd ratiss-decoherence-atlas
 
 La page principale fournit un design local prêt à lire. Pour rejouer un calcul, cliquez **« Ouvrir un artefact JSON »** puis sélectionnez `data/full_timeline.json`, une timeline du Studio Cloud, ou un fichier compatible. Ce flux volontaire contourne les restrictions de `fetch()` associées à `file://` sans introduire de serveur caché.
 
-## Deux démonstrations WebGL directes
+## Démonstrations WebGL visibles directement dans ce README
 
-Ces deux pages sont de petites démonstrations interactives : elles tournent directement avec `file://`, intègrent leur snapshot et ne téléchargent aucune donnée.
+GitHub Markdown ne peut pas exécuter le JavaScript de pages `file://` dans un README. Les deux blocs suivants apportent donc des **aperçus animés réels**, issus des rendus du Studio Personnel en fonctionnement hors ligne. Un clic ouvre la vidéo WebM versionnée ; pour manipuler la scène, ouvrez simplement le fichier HTML local indiqué.
 
-| Démonstration | Fichier | Ce qui est visible |
-|---|---|---|
-| Replay local de trajectoire | [`demos/trajectory-replay.html`](demos/trajectory-replay.html) | Nœuds, arêtes, timeline, route TSP et signature logique exportée |
-| Comparaison locale TTF | [`demos/ttf-ablation.html`](demos/ttf-ablation.html) | Référence, régularisation, frontière de variation et support structurel |
+### Démonstration 01 — replay local design + trajectoire
 
-![Comparaison WebGL TTF hors ligne](docs/assets/personal-ttf-webgl.webp)
+[![Aperçu animé réel de la trajectoire du Studio Personnel](docs/media/personal-trajectory-webgl-preview.gif)](docs/media/personal-trajectory-webgl.webm)
 
-Les captures sont des rendus réels des deux pages, et non des maquettes. Le catalogue complet et la recette de régénération sont dans [`docs/DEMO_CATALOG.md`](docs/DEMO_CATALOG.md).
+L’aperçu présente deux étapes de la timeline locale, de `h(0)` à `cz(0,1)`, sans cacher le design Studio à gauche. Il est construit à partir d’une vraie session `file://` et ne fait aucun appel réseau. Pour l’interaction complète, ouvrez [`demos/trajectory-replay.html`](demos/trajectory-replay.html) depuis le clone local.
+
+### Démonstration 02 — ablation TTF locale
+
+[![Aperçu animé réel de la comparaison TTF personnelle](docs/media/personal-ttf-webgl-preview.gif)](docs/media/personal-ttf-webgl.webm)
+
+L’aperçu alterne la référence et la régularisation embarquées tout en conservant l’interface Quantum Studio et la provenance `file://`. La comparaison agit sur les relations de graphe exportées ; elle ne modifie pas un état quantique physique. Pour l’interaction complète, ouvrez [`demos/ttf-ablation.html`](demos/ttf-ablation.html) depuis le clone local.
+
+| Démonstration | Média intégré | Vidéo | Interaction locale |
+|---|---|---|---|
+| Replay local de trajectoire | [`GIF animé`](docs/media/personal-trajectory-webgl-preview.gif) | [`WebM`](docs/media/personal-trajectory-webgl.webm) | Timeline, rotation, zoom et reset caméra |
+| Comparaison locale TTF | [`GIF animé`](docs/media/personal-ttf-webgl-preview.gif) | [`WebM`](docs/media/personal-ttf-webgl.webm) | Référence/régularisation, timeline, rotation et zoom |
+
+Les captures sont des rendus réels des deux pages, et non des maquettes. Le catalogue, la recette de régénération et les constats visuels sont disponibles dans [`docs/DEMO_CATALOG.md`](docs/DEMO_CATALOG.md) et [`docs/DEMO_VISUAL_AUDIT.md`](docs/DEMO_VISUAL_AUDIT.md).
 
 ## Lire la scène sans surinterpréter les couleurs
 
