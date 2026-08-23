@@ -16,9 +16,9 @@ Le Studio Personnel n’est pas une version décorative ou affaiblie du paradigm
 
 | Besoin scientifique | Réponse du Studio Personnel | Limite préservée |
 |---|---|---|
-| Relire une trajectoire de circuit en dehors de la machine de calcul | Chargement d’un `timeline.v1` ou d’un snapshot embarqué, avec design et provenance visibles. | Le navigateur ne relance pas une simulation matrice densité. |
+| Relire une trajectoire de circuit en dehors de la machine de calcul | Chargement d’un `timeline.v1` ou d’un snapshot embarqué, avec design et provenance visibles. | Le navigateur ne relance pas une simulation matrice densité (il lit les artefacts, simulés ou mesurés sur QPU). |
 | Comprendre la couche topologique logique | Anneau, tresse, phase, cohérence et protection affichés depuis l’artefact. | Ce sont des variables logicielles, pas des mesures d’un qubit matériel. |
-| Préparer une revue ou une discussion scientifique | La scène relie design, relations de graphe, criticité et signature logique à une étape précise. | La scène ne prouve pas une correction d’erreur physique. |
+| Préparer une revue ou une discussion scientifique | La scène relie design, relations de graphe, criticité et signature logique à une étape précise. | La scène audite les artefacts fournis. Ce que la scène ne fait pas : prouver une correction d’erreur physique ou contrôler le matériel. |
 | Comparer les scénarios TTF | La bascule conserve la provenance de référence/régularisation et déclare l’absence éventuelle de sidecar logique. | L’ablation reste une expérience sur les relations de graphe. |
 
 ### La grammaire visuelle locale
@@ -148,7 +148,7 @@ Le lecteur comprend le format principal `ratiss.topological-decoherence.timeline
 
 | Type de timeline | Contenu lisible | Étiquetage de portée |
 |---|---|---|
-| Simulation densité | Relations, topologie, fidélité, pureté et criticité si exportées | Simulation locale, pas QPU |
+| Simulation densité | Relations, topologie, fidélité, pureté et criticité si exportées | Simulation locale par défaut. Le pipeline audite aussi les mesures QPU (comptages) — voir section Validation. |
 | Statevector | Relations dérivées et provenance | Statevector de simulation, pas matériel |
 | Comptages Qiskit | Associations classiques de bits | Pas de tomographie, ni entanglement inféré |
 | Modes photoniques | Co-occupations déclarées | Pas de matrice densité photonique inférée |
