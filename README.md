@@ -96,6 +96,23 @@ Les captures sont des rendus réels des deux pages, et non des maquettes. Le cat
 | Ligne `P_sig` | Persistance de graphe fournie | Signature du noyau logique, sauf champ dédié |
 | Signature logique | Sortie du noyau RATISS simulé, lorsqu’elle existe | Mesure directe d’un qubit topologique matériel |
 
+
+## Validation sur QPU réel (IBM Quantum) — héritée de l'engine
+
+Le dépôt engine a exécuté deux circuits sur un QPU réel ibm_marrakesh.
+L'Atlas rejoue les artefacts ; la validation matérielle vient du moteur.
+
+![QPU réel vs simulation idéale](docs/media/qpu_vs_ideal_5q.png)
+
+### Exemple 1 — Bell state 2 qubits
+Counts attendus 98.7%, transformé par l'engine en timeline.v1.
+
+### Exemple 2 — circuit framework 5 qubits
+- Fidélité classique QPU vs idéal : 0.928
+- Taux de décohérence réelle : 12.1% (27 états parasites)
+- Distance total-variation : 0.0718
+
+---
 ## Contrats compatibles
 
 Le lecteur comprend le format principal `ratiss.topological-decoherence.timeline.v1`, le modèle `quantum-circuit-studio/v0.1` et, pour compatibilité, le format historique RATISS contenant `timeline`, `states`, `graphs` et `n_qubits`. Les imports historiques sont marqués comme tels : aucun score absent n’est reconstruit pour embellir la scène.
