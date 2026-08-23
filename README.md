@@ -97,20 +97,49 @@ Les captures sont des rendus réels des deux pages, et non des maquettes. Le cat
 | Signature logique | Sortie du noyau RATISS simulé, lorsqu’elle existe | Mesure directe d’un qubit topologique matériel |
 
 
-## Validation sur QPU réel (IBM Quantum) — héritée de l'engine
+## Validation sur QPU réel (IBM Quantum) — exécutée sur ibm_marrakesh
 
-Le dépôt engine a exécuté deux circuits sur un QPU réel ibm_marrakesh.
-L'Atlas rejoue les artefacts ; la validation matérielle vient du moteur.
+Notre simulateur n'est **pas que théorique** : deux circuits ont été exécutés
+sur un vrai QPU **ibm_marrakesh** (IBM Quantum), et les résultats mesurés
+alimentent les artefacts que cet Atlas rejoue. Les Job IDs sont publics et
+vérifiables sur [quantum.ibm.com](https://quantum.ibm.com).
 
 ![QPU réel vs simulation idéale](docs/media/qpu_vs_ideal_5q.png)
 
-### Exemple 1 — Bell state 2 qubits
-Counts attendus 98.7%, transformé par l'engine en timeline.v1.
+### Exemple 1 — Bell state (2 qubits) : `da53s4jotlns739bfgu0`
 
-### Exemple 2 — circuit framework 5 qubits
-- Fidélité classique QPU vs idéal : 0.928
-- Taux de décohérence réelle : 12.1% (27 états parasites)
-- Distance total-variation : 0.0718
+Circuit `h(0); cx(0,1); measure_all`, 1024 shots.
+
+| Métrique | Résultat |
+|---|---|
+| Counts mesurés | `{'11': 526, '00': 491, '01': 4, '10': 3}` |
+| États attendus | **98.7%** (|00⟩ + |11⟩) |
+| Transformation | engine → timeline.v1 |
+
+### Exemple 2 — circuit framework 5 qubits × 10 portes : `da58ftmaa69c739kic90`
+
+Circuit identique au scénario du moteur (h, cx, cx, h, cx, cx, cz, ry, rz, cx),
+2048 shots.
+
+**QPU réel vs simulation idéale (même circuit) :**
+
+| Métrique | Valeur mesurée |
+|---|---:|
+| Fidélité classique (recouvrement) | **0.928** |
+| Distance total-variation | **0.0718** |
+| États attendus (4 principaux) | **87.9%** des shots |
+| **Taux de décohérence réelle** | **12.1%** (27 états parasites) |
+| Top état QPU | `11001` — 22.1% (vs 25.1% idéal) |
+
+### Portée honnête
+
+- Ce sont des **exécutions QPU réelles**, pas des simulations. Job IDs publics.
+- On compare des distributions de mesures classiques (pas une tomographie).
+- L'Atlas rejoue les artefacts produits par le moteur — la validation
+  matérielle vient de l'engine, pas de cette interface.
+
+Artefacts réutilisés (produits par l'engine) : `qpu_bell_counts.json`,
+`qpu_5q_counts.json`, `qpu_5q_timeline.json`, `qpu_vs_ideal_comparison.json`.
 
 ---
 ## Contrats compatibles
