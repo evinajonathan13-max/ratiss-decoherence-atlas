@@ -1,4 +1,15 @@
-# RATISS Quantum Topology Studio Personal
+<p align="center">
+  <img src="docs/brand/atlas-logo.png" alt="RATISS Atlas — scène topologique WebGL et cycle de persistance H1" width="220"/>
+</p>
+
+<h1 align="center">RATISS Quantum Topology Studio Personal</h1>
+
+<p align="center">
+  <a href="LICENSE"><img alt="Licence MIT" src="https://img.shields.io/badge/Licence-MIT-42d6ad?style=for-the-badge"></a>
+  <img alt="JavaScript / Node" src="https://img.shields.io/badge/JavaScript-Node%20%E2%89%A5%2018-79b8ff?style=for-the-badge&logo=javascript&logoColor=white">
+  <img alt="Three.js WebGL" src="https://img.shields.io/badge/Three.js-WebGL-6929c4?style=for-the-badge">
+  <img alt="Hors ligne / file://" src="https://img.shields.io/badge/Ex%C3%A9cution-hors%20ligne-ff927d?style=for-the-badge">
+</p>
 
 > **Un studio de conception et de cartographie topologique qui s’ouvre directement dans le navigateur, sans serveur, sans CDN et sans compte.**
 
